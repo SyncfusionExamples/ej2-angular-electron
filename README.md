@@ -210,5 +210,3 @@ npm  run electron-build
  
 npm  run electron 
 ```
->Note: For your convenience we have prepared a angular sample with electron framework that can be downloaded from the following link,
- https://www.syncfusion.com/downloads/support/directtrac/249428/ze/my-app1408522441 
