@@ -1,13 +1,10 @@
-# ej2-angular-electron
-Integrating electron framework with EJ2 Angular components
-
-## Getting Started Electron with Angular
+# Getting Started Electron with Angular
 
 This document helps you to create a simple Angular application with `Electron Framework` and `Syncfusion Angular UI components`.
 
 ## Prerequisites
 
-Before getting started with Syncfusion Angular Components in Electron with Angular project, check whether the following are installed in the developer machine. 
+Before getting started with the Angular project with Syncfusion Angular Components in Electron, check whether the following are installed in the developer machine. 
 
 * Angular Versions supported - 4+
 * Typescript Versions supported - 2.6+
@@ -187,9 +184,14 @@ createWindow()
 });  
 ```
 
+## Update index.html
+
+In the `/src/index.html` file, change `<base href="/">` as `<base href="./">`. Then only the Electron will able to find the Angular files.
+
 ## Update package.json
 
 ```typescript
+"main":"main.js",
 "scripts": { 
     "ng": "ng", 
     "start": "ng serve", 
@@ -204,6 +206,14 @@ createWindow()
 
 Then, Include the above code in `package.json` file.
 
+## Update tsconfig.json
+
+In `tsconfig.json` file, change the target as
+
+```typescript
+"target": "es5"
+```
+
 ## Running the application
 
  Finally, run the following command line to start the application. The Syncfusion Essential JS 2 menu component will be rendered in the electron framework. 
@@ -213,5 +223,3 @@ npm  run electron-build
  
 npm  run electron 
 ```
->Note: For your convenience we have prepared a angular sample with electron framework that can be downloaded from the following link,
- https://www.syncfusion.com/downloads/support/directtrac/249428/ze/my-app1408522441 
