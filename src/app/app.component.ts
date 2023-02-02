@@ -1,49 +1,26 @@
 import { Component } from '@angular/core';
-import { enableRipple } from '@syncfusion/ej2-base';
-import { MenuItemModel } from '@syncfusion/ej2-angular-navigations';
-
-enableRipple(true);
 
 @Component({
-    selector: 'app-root',
-    template: `<!-- To Render Menu. -->
-            <ejs-menu [items]='menuItems'></ejs-menu>`
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-
 export class AppComponent {
-    public menuItems: MenuItemModel[] = [
-        {
-            text: 'File',
-            items: [
-                { text: 'Open',  url: 'https://www.google.com/search?q=washing+machine' },
-                { text: 'Save' },
-                { text: 'Exit' }
-            ]
-        },
-        {
-            text: 'Edit',
-            items: [
-                { text: 'Cut' },
-                { text: 'Copy' },
-                { text: 'Paste' }
-            ]
-        },
-        {
-            text: 'View',
-            items: [
-                { text: 'Toolbar' },
-                { text: 'Sidebar' }
-            ]
-        },
-        {
-            text: 'Tools',
-            items: [
-                { text: 'Spelling & Grammar' },
-                { text: 'Customize' },
-                { text: 'Options' }
-            ]
-        },
-        { text: 'Go' },
-        { text: 'Help' }
-    ];
+  public data: Object[] = [
+    {
+      OrderID: 10248, CustomerID: 'VINET', EmployeeID: 5, OrderDate: new Date(8364186e5),
+      ShipName: 'Vins et alcools Chevalier', ShipCity: 'Reims', ShipAddress: '59 rue de l Abbaye',
+      ShipRegion: 'CJ', ShipPostalCode: '51100', ShipCountry: 'France', Freight: 32.38, Verified: !0
+    },
+    {
+      OrderID: 10249, CustomerID: 'TOMSP', EmployeeID: 6, OrderDate: new Date(836505e6),
+      ShipName: 'Toms Spezialitäten', ShipCity: 'Münster', ShipAddress: 'Luisenstr. 48',
+      ShipRegion: 'CJ', ShipPostalCode: '44087', ShipCountry: 'Germany', Freight: 11.61, Verified: !1
+    },
+    {
+      OrderID: 10250, CustomerID: 'HANAR', EmployeeID: 4, OrderDate: new Date(8367642e5),
+      ShipName: 'Hanari Carnes', ShipCity: 'Rio de Janeiro', ShipAddress: 'Rua do Paço, 67',
+      ShipRegion: 'RJ', ShipPostalCode: '05454-876', ShipCountry: 'Brazil', Freight: 65.83, Verified: !0
+    }
+  ];  
 }

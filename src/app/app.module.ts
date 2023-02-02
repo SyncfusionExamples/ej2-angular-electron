@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-// Imported Syncfusion menu module from navigations package.
-import { MenuModule } from '@syncfusion/ej2-angular-navigations';
-
 import { AppComponent } from './app.component';
+import { GridModule, PagerModule } from '@syncfusion/ej2-angular-grids';
 
 @NgModule({
-    imports: [BrowserModule, MenuModule], // Registering EJ2 Menu Module.
-    declarations: [AppComponent],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    GridModule, PagerModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
