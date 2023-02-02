@@ -1,27 +1,83 @@
-# Sample15
+# Integrating Syncfusion Angular Components with Angular and Electron Applications
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
+This document helps you to create a simple Angular application with `Electron Framework` and `Syncfusion Angular UI components`.
 
-## Development server
+## Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Before getting started with the Angular project, make sure you have the following installed on your machine,
 
-## Code scaffolding
+* [System requirements for Syncfusion Angular UI components](https://ej2.syncfusion.com/angular/documentation/system-requirement)
+* Electron CLI version - `^22.x.x` or later
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+If you do not have the `Electron CLI` installed, refer to the [`Electron package`](https://www.npmjs.com/package/electron-cli) for instructions on how to install it.
 
-## Build
+## Getting started with Syncfusion Angular component
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Follow the [documentation](https://ej2.syncfusion.com/angular/documentation/getting-started/angular-cli) to create an Angular application that includes Syncfusion Angular components.
 
-## Running unit tests
+## Create main.js file
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Create a `main.js` file in the root folder of the project and update the below code, This file will serve as an entry-point for Electron and it is responsible for creating windows and handling all the system events that might occur in the app.
 
-## Running end-to-end tests
+```typescript
+const { app, BrowserWindow } = require('electron');
+let win;
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+function createWindow() {
+  win = new BrowserWindow({ width: 800, height: 600 });
 
-## Further help
+  // Load the Angular app in the browser window
+  win.loadFile('./dist/sample15/index.html');
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  win.on('closed', () => {
+    win = null;
+  });
+}
+
+app.on('ready', createWindow);
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+app.on('activate', () => {
+  if (win === null) {
+    createWindow();
+  }
+});
+
+```
+
+## Update index.html
+
+In the `/src/index.html` file, change `<base href="/">` to `<base href="./">`, so that the Electron can able to find the Angular files.
+
+## Update package.json
+
+Go to your root directory and find the package.json file. Open its content and add the following,
+
+```typescript
+"main":"main.js",
+"scripts": { 
+    "ng": "ng", 
+    "start": "ng serve", 
+    "build": "ng build", 
+    "test": "ng test", 
+    "lint": "ng lint", 
+    "e2e": "ng e2e", 
+    "electron-build": "ng build --configuration=production",
+    "electron": "electron ." 
+}, 
+```
+
+## Running the application
+
+Finally, run the following command line to start the application. The Syncfusion Essential JS 2 menu component will be rendered in the Electron framework.
+
+ ```bash
+npm  run electron-build 
+ 
+npm  run electron 
+```
