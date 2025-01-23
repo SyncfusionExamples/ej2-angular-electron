@@ -1,83 +1,59 @@
-# Integrating Syncfusion Angular Components with Angular and Electron Applications
+# MyApp
 
-This document helps you to create a simple Angular application with `Electron Framework` and `Syncfusion Angular UI components`.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
 
-## Prerequisites
+## Development server
 
-Before getting started with the Angular project, make sure you have the following installed on your machine,
+To start a local development server, run:
 
-* [System requirements for Syncfusion Angular UI components](https://ej2.syncfusion.com/angular/documentation/system-requirement)
-* Electron CLI version - `^22.x.x` or later
-
-If you do not have the `Electron CLI` installed, refer to the [`Electron package`](https://www.npmjs.com/package/electron-cli) for instructions on how to install it.
-
-## Getting started with Syncfusion Angular component
-
-Follow the [documentation](https://ej2.syncfusion.com/angular/documentation/getting-started/angular-cli) to create an Angular application that includes Syncfusion Angular components.
-
-## Create main.js file
-
-Create a `main.js` file in the root folder of the project and update the below code, This file will serve as an entry-point for Electron and it is responsible for creating windows and handling all the system events that might occur in the app.
-
-```typescript
-const { app, BrowserWindow } = require('electron');
-let win;
-
-function createWindow() {
-  win = new BrowserWindow({ width: 800, height: 600 });
-
-  // Load the Angular app in the browser window
-  win.loadFile('./dist/sample15/index.html');
-
-  win.on('closed', () => {
-    win = null;
-  });
-}
-
-app.on('ready', createWindow);
-
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
-
-app.on('activate', () => {
-  if (win === null) {
-    createWindow();
-  }
-});
-
+```bash
+ng serve
 ```
 
-## Update index.html
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-In the `/src/index.html` file, change `<base href="/">` to `<base href="./">`, so that the Electron can able to find the Angular files.
+## Code scaffolding
 
-## Update package.json
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-Go to your root directory and find the package.json file. Open its content and add the following,
-
-```typescript
-"main":"main.js",
-"scripts": { 
-    "ng": "ng", 
-    "start": "ng serve", 
-    "build": "ng build", 
-    "test": "ng test", 
-    "lint": "ng lint", 
-    "e2e": "ng e2e", 
-    "electron-build": "ng build --configuration=production",
-    "electron": "electron ." 
-}, 
+```bash
+ng generate component component-name
 ```
 
-## Running the application
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-Finally, run the following command line to start the application. The Syncfusion Essential JS 2 menu component will be rendered in the Electron framework.
-
- ```bash
-npm  run electron-build 
- 
-npm  run electron 
+```bash
+ng generate --help
 ```
+
+## Building
+
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
