@@ -1,10 +1,27 @@
 import { Component } from '@angular/core';
+import { GridModule } from '@syncfusion/ej2-angular-grids';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  imports: [GridModule, CommonModule],
+  template: `
+  <h1>
+    Syncfusion Angular UI Grid with Electorn!
+  </h1>
+
+  <ejs-grid [dataSource]='data'>
+    <e-columns>
+      <e-column field='OrderID' headerText='Order ID' textAlign='Right' width=90></e-column>
+      <e-column field='CustomerID' headerText='Customer ID' width=120></e-column>
+      <e-column field='Freight' headerText='Freight' textAlign='Right' format='C2' width=90></e-column>
+      <e-column field='OrderDate' headerText='Order Date' textAlign='Right' format='yMd' width=120></e-column>
+    </e-columns>
+  </ejs-grid>
+ `,
+  styleUrl: './app.component.css'
 })
+
 export class AppComponent {
   public data: Object[] = [
     {
@@ -22,5 +39,5 @@ export class AppComponent {
       ShipName: 'Hanari Carnes', ShipCity: 'Rio de Janeiro', ShipAddress: 'Rua do Paço, 67',
       ShipRegion: 'RJ', ShipPostalCode: '05454-876', ShipCountry: 'Brazil', Freight: 65.83, Verified: !0
     }
-  ];  
+  ];
 }
