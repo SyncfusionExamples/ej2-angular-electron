@@ -1,11 +1,12 @@
 const { app, BrowserWindow } = require('electron');
+const path = require('path');
+
 let win;
 
 function createWindow() {
   win = new BrowserWindow({ width: 800, height: 600 });
-
-  // Load the Angular app in the browser window
-  win.loadFile('./dist/sample15/index.html');
+  win.loadFile(path.join(__dirname, 'dist/electron-app/browser/index.html')); // Adjust 'my-app' to your project name
+  win.webContents.openDevTools();
 
   win.on('closed', () => {
     win = null;
